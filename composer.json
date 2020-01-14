@@ -1,0 +1,26 @@
+{
+    "name": "2mindapps/laravel-api-pagamentos",
+    "description": "Biblioteca de integração com a API 2Mind Pagamentos para Laravel >= 5.5",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "authors": [
+        {
+            "name": "Daniel Barcelos",
+            "email": "daniel.barcelos@2mind.com.br"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "MindApps\\LaravelApiPagamentos\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MindApps\\LaravelApiPagamentos\\ApiServiceProvider"
+            ]
+        }
+    }
+}
