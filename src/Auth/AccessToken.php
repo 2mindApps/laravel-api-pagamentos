@@ -18,7 +18,7 @@ class AccessToken
 
         $uri = ApiHelper::getUrlBase();
 
-        $response = $api->simpleRequest('POST', $uri.'/access-token', [
+        $response = $api->simpleRequest('POST', $uri.'/access-token', '', [
             'client_id' => $clientId,
             'client_secret' => $clientSecret,
         ]);

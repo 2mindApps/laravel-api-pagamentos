@@ -21,10 +21,11 @@ class ApiHelper
     /**
      * @info Realiza requisição na API do tipo form_params (requisição simples)
      * @param $method
+     * @param $authorization
      * @param $uri
      * @param array $formParams
      */
-    public function simpleRequest($method, $uri, $formParams = [])
+    public function simpleRequest($method, $uri, $authorization, $formParams = [])
     {
         $result  = null;
 
@@ -34,6 +35,7 @@ class ApiHelper
             $result  = $guzzle->request(strtoupper($method), $uri, [
                 'headers'      => [
                     'Accept'   => 'application/json',
+                    'Authorization' => 'Bearer '.$authorization
                 ],
                 'form_params'  => $formParams
             ]);
@@ -52,11 +54,12 @@ class ApiHelper
     /**
      * @info Realiza requisição na API do tipo multipart (envio de arquivos)
      * @param $method
+     * @param $authorization
      * @param $uri
      * @param array $multipart
      * @return mixed
      */
-    public function multipartRequest($method, $uri, $multipart = [])
+    public function multipartRequest($method, $authorization, $uri, $multipart = [])
     {
         $result  = null;
 
@@ -66,6 +69,7 @@ class ApiHelper
             $result  = $guzzle->request($method, $uri, [
                 'headers'      => [
                     'Accept'   => 'application/json',
+                    'Authorization' => 'Bearer '.$authorization
                 ],
                 'multipart' => $multipart,
             ]);
