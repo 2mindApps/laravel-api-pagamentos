@@ -21,14 +21,7 @@ class Remessa
 
         $response = $api->simpleRequest('GET', $uri.'/cnab/remessas', $token, []);
 
-        if(!$response->success)
-        {
-            throw new \Exception($response->log[0]['error']);
-        }
-        else
-        {
-            return $response->remessas;
-        }
+        return $response;
     }
 
     /**
@@ -45,14 +38,7 @@ class Remessa
 
         $response = $api->simpleRequest('GET', $uri.'/cnab/remessas/pendencias', $token, []);
 
-        if(!$response->success)
-        {
-            throw new \Exception($response->log[0]['error']);
-        }
-        else
-        {
-            return $response->quantidade;
-        }
+        return $response;
     }
 
     /**
@@ -69,14 +55,7 @@ class Remessa
 
         $response = $api->simpleRequest('GET', $uri.'/cnab/remessas/pendencias', $token, []);
 
-        if(!$response->success)
-        {
-            throw new \Exception($response->log[0]['error']);
-        }
-        else
-        {
-            return $response->pendencias;
-        }
+        return $response;
     }
 
 
@@ -95,14 +74,25 @@ class Remessa
 
         $response = $api->simpleRequest('GET', $uri.'/cnab/remessas/'.$id.'/show', $token, []);
 
-        if(!$response->success)
-        {
-            throw new \Exception($response->log[0]['error']);
-        }
-        else
-        {
-            return $response->remessa;
-        }
+        return $response;
+    }
+
+    /**
+     * @info Gera remessa de acordo com itens pendentes
+     * @param $token
+     * @param $id
+     * @return mixed
+     * @throws \Exception
+     */
+    public static function postGeraRemessa($token)
+    {
+        $api = new ApiHelper();
+
+        $uri = ApiHelper::getUrlBase();
+
+        $response = $api->simpleRequest('POST', $uri.'/cnab/remessas/add', $token, []);
+
+        return $response;
     }
 
 }
